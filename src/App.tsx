@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/home";
-import PropositionContent from "./pages/proposition-content";
+import Articles from "./pages/articles";
+import MyPage from "./pages/mypage";
 
 export default function App() {
   return (
@@ -9,7 +10,8 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/proposition/:id" element={<PropositionContent />} />
+          <Route path="/article" element={<Articles />} />
+          <Route path="/my-page" element={<MyPage />} />
         </Routes>
       </BrowserRouter>
     </React.StrictMode>

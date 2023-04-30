@@ -1,26 +1,37 @@
-import Layout from "../components/layout";
-import { Card, Container, Flex } from "@mantine/core";
-import React, { useState } from "react";
-import PropositionList from "../components/proposition-thumbnail";
-import Search from "../components/search";
-import SearchFilter from "../components/search-filter";
-import { useInputState } from "@mantine/hooks";
-import { committees } from "../lib/const/navigate";
+import { Box, Button, Paper, Stack, Text } from "@mantine/core";
+import React from "react";
+import { Link } from "react-router-dom";
+import { useViewportSize } from "@mantine/hooks";
 
-export default function Home() {
-  const [input, setInput] = useInputState("");
-  const [filter, setFilter] = useState<string[]>(committees);
+function Home() {
+  const { height } = useViewportSize();
   return (
-    <Layout>
-      <Container mt={100} mb={80}>
-        <Search setInput={setInput} />
-      </Container>
-      <Container size={"lg"}>
-        <Flex gap={40} justify="center">
-          <SearchFilter setFilter={setFilter} />
-          <PropositionList filter={filter} input={input} />
-        </Flex>
-      </Container>
-    </Layout>
+    <>
+      <Box h={height} p={80} bg="orange.0">
+        <Paper w="100%" h="100%" radius="xl" shadow="sm">
+          <Stack align="center" justify="center" h="100%" spacing={60}>
+            <Stack align="center" justify="center">
+              <Text component="h1" size={72} my={0}>
+                Invest ED
+              </Text>
+              <Text size={28}>
+                "더 나은 미래를 위해 자산을 올바르게 관리하고 선택하세요"
+              </Text>
+            </Stack>
+            <Button
+              component={Link}
+              to="/article"
+              color="red.6"
+              radius="md"
+              size="lg"
+            >
+              👉 아티클 보러가기
+            </Button>
+          </Stack>
+        </Paper>
+      </Box>
+    </>
   );
 }
+
+export default Home;
